@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<input type=button class="btn" value="Back" style="background-color:black; color:white; margin-left: 1%;position: absolute;" onClick="javascript:history.go(-1);">
+    <div class="artwork-image">
+        <a href="https://ibb.co/Vc8QcmLW"><img style="height: 30%;
+    width: 300px;
+    margin-left: 38%;" src="https://i.ibb.co/jPFWPR8v/Whats-App-Image-2025-03-20-at-10-21-03-PM.jpg" alt="Whats-App-Image-2025-03-20-at-10-21-03-PM" border="0"></a>
+    </div>
+
+    <h1 style="text-align: center;
+    margin-top: 1%;">Congratulations!</h1>
+    <p style="text-align: center; font-size:24px;margin-top:5px;">You have successfully purchased "{{ art_piece.title }}".</p>
+    {% endblock %}

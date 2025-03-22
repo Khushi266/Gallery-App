@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<input type=button class="btn" value="Back" style="background-color:black; color:white; margin-left: 1%;position: absolute;" onClick="javascript:history.go(-1);">
+    <div class="artwork-image">
+        <img src="{{ art_piece.image }}" alt="{{ art_piece.title }}" style="margin-left: 40%;
+    margin-top: 2%;">
+    </div>
+
+    <div class="artwork-info-and-bid">
+        <div class="artwork-info" style="
+        text-align: center;
+        font-size: 16px;
+        width: 40%;
+        margin-left: 30%;
+        margin-top: 2%;
+    ">
+            <p><strong>Description:</strong> {{ art_piece.description }}</p>
+            <p><strong>Artist:</strong> {{ art_piece.artist }}</p>
+            <p><strong>Current Bid:</strong> ${{ art_piece.current_bid }}</p>
+            <p><strong>Bid End Time:</strong> {{ art_piece.end_bid_time }}</p>
+        </div>
+
+        <h1 style="text-align: center;
+        margin-top: 3%;">Payment for {{ art_piece.title }}</h1>
+        <p style="text-align: center; font-size:24px;margin-top:5px;">Price: ${{ art_piece.price }}</p>
+        
+
+    <form method="post" style="text-align: center; ">
+        {% csrf_token %}
+        <button type="submit" style="background-color:black; color:white; height: 37px;
+    border-radius: 8px; margin-bottom:3%;" >Proceed to Payment</button>
+    </form>
+    {% endblock %}

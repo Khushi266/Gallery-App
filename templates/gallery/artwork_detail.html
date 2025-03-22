@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    /* Container for the artwork detail */
+    .artwork-detail-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Artwork detail card with image on the left and content on the right */
+    .artwork-detail-card {
+        display: flex;
+        flex-direction: row;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        gap: 20px; /* Space between image and info */
+    }
+
+    /* Artwork image styling */
+    .artwork-image img {
+        max-width: 750px;
+        height: 550px;
+        border-radius: 10px;
+    }
+
+    /* Artwork info and place bid section on the right */
+    .artwork-info-and-bid {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex: 1; /* Make it take up the remaining space */
+    }
+
+    .artwork-info {
+        margin-bottom: 30px;
+    }
+
+    .artwork-info p {
+        margin: 10px 0;
+        font-size: 16px;
+        color: #333;
+    }
+
+    /* Place bid section */
+    .bid-section {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50%;
+    }
+
+    .bid-section h3 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .place-bid-btn {
+        background-color:rgb(0, 0, 0);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 37%;
+    }
+
+    .place-bid-btn:hover {
+        background-color:rgb(1, 1, 1);
+        color: white;
+    }
+
+    .form-errors {
+        color: red;
+        margin-top: 10px;
+    }
+
+    /* Bids list styling */
+    .bids-list {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .bids-list h3 {
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .bids-list ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .bids-list ul li {
+        font-size: 16px;
+        padding: 8px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .bids-list ul li:last-child {
+        border-bottom: none;
+    }
+
+</style>
+<input type=button class="btn" value="Back" style="background-color:black; color:white; margin-left: 1%;position: absolute;" onClick="javascript:history.go(-1);">
+<div class="artwork-detail-container">
+    <h1>{{ artwork.title }}</h1>
+
+    <div class="artwork-detail-card">
+        <!-- Artwork image on the left -->
+        <div class="artwork-image">
+            <img src="{{ artwork.image }}" alt="{{ artwork.title }}">
+        </div>
+
+        <!-- Artwork details and place bid on the right -->
+        <div class="artwork-info-and-bid">
+            <div class="artwork-info">
+                <p><strong>Description:</strong> {{ artwork.description }}</p>
+                <p><strong>Artist:</strong> {{ artwork.artist }}</p>
+                <p><strong>Current Bid:</strong> ${{ artwork.current_bid }}</p>
+                <p><strong>Bid End Time:</strong> {{ artwork.end_bid_time }}</p>
+            </div>
+
+            <!-- Place Bid Section -->
+            <div class="bid-section">
+    
+                <div >
+                    <a href="{% url 'payment_page' artwork.id %}"><button class="place-bid-btn">Purchase</button></a>
+                </div>
+                
+            </div>
+
+            <!-- List of Bids -->
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
